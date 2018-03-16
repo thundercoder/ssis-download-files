@@ -12,25 +12,33 @@ In this project I use the following tools:
 Download to your project directory, add it, and commit.
 
 ```sh
-git clone https://github.com/thundercoder/ssis-download-files.git <<local-folder>>
+$ git clone https://github.com/thundercoder/ssis-download-files.git <<local-folder>>
 ```
 
 ## Usage
 
 After downloading the project you need to set all the components and varibles enviroment, so do the following things:
 
-1.	Variables:
-	1.1 	Customers is the dataset from your query made (SQL SERVER in this case).	
-	1.2	CustomerIdentification and CustomerName there are used to be filled when the forEach is reading the dataset (Variable Customers) of the SQL Task Component.
-	1.3 	FilesDirectory, as your name say it, it's the directory where you're gonna save the file you download.
-	1.4	Period is a parameter specifying the document's period to be sent through url.
-	1.5	ServerRequested is the server where you will send the request
+- 1.	Variables:
+  - 1.1 Customers is the dataset from your query made (SQL SERVER in this case).	
+  
+  - 1.2 CustomerIdentification and CustomerName there are used to be filled when the forEach is reading the dataset (Variable Customers) of the SQL Task Component.
+  
+  - 1.3 FilesDirectory, as your name say it, it's the directory where you're gonna save the file you download.
+  
+  - 1.4 Period is a parameter specifying the document's period to be sent through url.
+  
+  - 1.5 ServerRequested is the server where you will send the request
 
-2. Components
-	2.1	The first component you will see is Foreach Loop Container with a File Task inside. It's gonna remove all files of your FileDirectory Variable, it has *.* include in file extensions to erase all files.
-	2.2	SQL TASK to fille the Customers variable.
-	2.3	Foreach Loop Container to go through the Customer variable mapping the others variables: CustomerIdentification and CustomerName to be send via url to the request.
-	2.4	Script Task in charge to send the request via url. When you open this component, click to 'Edit Script', you will see the following code that is in charge to download the file (Configure it! xD all the variable are clear and is clear to understand):
+- 2. Components
+  
+  - 2.1 The first component you will see is Foreach Loop Container with a File Task inside. It's gonna remove all files of your FileDirectory Variable, it has *.* include in file extensions to erase all files.
+  
+  - 2.2 SQL TASK to fille the Customers variable.
+  
+  - 2.3 Foreach Loop Container to go through the Customer variable mapping the others variables: CustomerIdentification and CustomerName to be send via url to the request.
+  
+  - 2.4 Script Task in charge to send the request via url. When you open this component, click to 'Edit Script', you will see the following code that is in charge to download the file (Configure it! xD all the variable are clear and is clear to understand):
 
 ```
 ' Get the unmanaged connection object, from the connection manager called "HTTP Connection Manager"
